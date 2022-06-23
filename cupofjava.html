@@ -72,8 +72,103 @@
 	var adjective3 = "entertaining";
 	var madlib = "The Intro to JavaScript course is "+adjective1 +". James and Julia are so "+adjective2+". I cannot wait to work through the rest of this "+adjective3+" content!"
 	console.log(madlib);
+
+	var firstName = "Julia";
+	var interest = "cats";
+	var hobby = "play video games";
+	var awesomeMessage = "Hi, my name is "+firstName+ ". I love "+interest+ ". In my spare time, I like to "+hobby+".";
+	console.log(awesomeMessage)
+
+	var price = 15.00; //price of the hammer
+	var money = 20.00; // money I have
+	//run comparison to determine whether I can make a purchase
+	if(money >= price){
+		console.log("buy the hammer");
+	} else {
+		console.log("don't buy the hammer");
+	}
+
+	//Else if statements
+	var weather = "rain";
+
+	if (weather === "snow") {
+		console.log("Bring a coat");
+	} else if (weather === "rain") {
+		console.log("Bring a rain jacket");
+	} else {
+		console.log("Wear what you have on");
+	}
+
+	//Practice question
+	var money = 100.50;
+	var price = 100.50;
+
+	if (money > price) {
+		console.log("You paid extra, here's your change.");
+	} else if (money === price) {
+		console.log("You paid exact amout, have a nice day!");
+	} else {
+		console.log("That's not enough, you still owe me money");
+	}
+
+	//Practice question
+	var runner = "Kendyll";
+	var position = 2;
+	var medal;
+
+	if (position === 1) {
+		medal = "gold";
+	} else if (position === 2) {
+		medal = "silver";
+	} else if (position === 3) {
+		medal = "bronze"
+	} else {
+		medal = "pat on the back";
+	}
+
+	console.log (runner + " received a "+medal+ " medal.")
+
+
 </script>
 
 <a title="viewbug photo contests" href="https://www.viewbug.com/photo-contests"><img style="width:200px;" alt="viewbug photo contests" src="https://www.viewbug.com/media/images/layout/badges/superstar.png"/></a>
+<h1>Conditionals</h1>
+<h2>If...else statements</h2>
+<p>
+	If...else statements allow you to execute certain pieces of code based on a condition, or set of conditions, being met.<br><br>
+	<b>if</b> (this expression is true) {<br>
+		run this code<br>
+	} <b>else</b> {<br>
+		run this code<br>
+	}<br>
+	<h3>Example</h3>
+	var a = 1;<br>
+	var b = 2;<br>
+
+	if (a > b) {<br>
+  	console.log("a is greater than b");<br>
+	} else {<br>
+  	console.log("a is less than or equal to b");<br>
+	}<br>
+	Prints: "a is less than or equal to b"
+</p>
+
+<h2>Else If statements</h2>
+<p>
+	You're trying to decide what to wear tomorrow. If it is going to snow, then you’ll want to wear a coat. If it's not going to snow and it's going to rain, then you’ll want to wear a jacket. And if it's not going to snow or rain, then you’ll just wear what you have on.<br><br>
+
+	var weather = "sunny"; <br><br>
+
+	<b>If</b> (weather === "snow") { <br>
+	     console.log("Bring a coat."); <br>
+	} <b>else if</b> (weather === "rain") { <br>
+	     console.log("Bring a rain jacket."); <br>
+	} <b>else</b> { <br>
+	     console.log("Wear what you have on."); <br>
+	}<br>
+
+
+</p>
+
 </body>
 </html>
