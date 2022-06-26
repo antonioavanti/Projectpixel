@@ -128,6 +128,83 @@
 
 	console.log (runner + " received a "+medal+ " medal.")
 
+// quiz question 3-2: Even or Odd
+
+// Write an if...else statement that prints "even" if the number is even and prints "odd" if the number is odd.
+
+ var number = 16;
+
+ if (0 === number % 3) {
+ 	console.log("even");
+ } else {
+ 	console.log("odd");
+ }
+
+ // quiz question 3-3: Musical groups
+
+var musicians = 3;
+
+if ( musicians <= 0){
+	console.log ("not a group");
+} else if (musicians === 1){
+	console.log("solo");
+} else if (musicians === 2){
+	console.log("duet");
+} else if (musicians === 3){
+	console.log("trio");
+} else if ( musicians === 4){
+	console.log("quartet")
+} else if (musicians >= 5){
+	console.log ("this is a large group")
+}
+
+// Logical operators
+
+var colt = "not busy";
+var weather = "nice";
+
+if (colt === "busy" && weather === "nice"){
+	console.log("got to the park");
+} else {
+	console.log("do not go to the park");
+}
+
+console.log(!(4 === 4) && "STRing" === "STRing")
+console.log (true || false)
+console.log (false && false)
+console.log (!true)
+console.log ((13 > -7) || (false == 0))
+console.log ((3 != 6 % 3) && !(24 > 45) && (!false))
+
+// quiz question 3-4: Murder Mystery
+
+ var room = "gallery";
+ var suspect = "Ms. Van Cleve";
+ var weapon = "";
+ var solved = false;
+
+ if (room === "billiards room"){
+ 	weapon = "pool stick"
+ 	if(suspect === "Mrs. Sparr")
+ 		solved = true;
+ } else if (room === "dining room"){
+ 	weapon = "knife"
+ 	if(suspect === "Mr. Parkes")
+ 	solved = true;
+ } else if (room === "gallery"){
+ 	weapon = "trophy"
+ 	if(suspect === "Ms. Van Cleve")
+ 	solved = true;
+ } else if (room === "ballroom"){
+ 	weapon = "poison"
+ 	if(suspect==="Mr. Kalehoff")
+ 		solved = true;
+ }
+ }
+
+ if (solved){
+ 	console.log(suspect+" did it in the "+room+" with the "+weapon+"!")
+ }
 
 </script>
 
@@ -166,9 +243,27 @@
 	} <b>else</b> { <br>
 	     console.log("Wear what you have on."); <br>
 	}<br>
-
-
 </p>
+
+<h2>Logical Operators</h2>
+<p>
+	Here’s the logical expression used to represent Julia’s weekend plans:<br><br>
+
+var colt = "not busy";<br>
+var weather = "nice";<br><br>
+
+if (colt === "not busy" && weather === "nice") {<br>
+  console.log("go to the park");<br>
+}<br>
+Prints: "go to the park"<br><br>
+
+Notice the && in the code above.<br><br>
+
+The && symbol is the logical AND operator, and it is used to combine two logical expressions into one larger logical expression. If both smaller expressions are true, then the entire expression evaluates to true. If either one of the smaller expressions is false, then the whole logical expression is false.<br><br>
+
+Another way to think about it is when the && operator is placed between the two statements, the code literally reads, "if Colt is not busy AND the weather is nice, then go to the park".
+</p>
+
 
 </body>
 </html>
