@@ -241,7 +241,31 @@ if ((flavor === "vanilla" || flavor === "chocolate") && (vessel === "cone" || ve
 
 //quiz question 3-7: what do i wear?
 
+var shirtWidth = 19;
+var shritLength = 29;
+var shirtSleeve = 8.36;
 
+if (shirtWidth <= 18 && shritLength === 28 && shirtSleeve <= 8.13){
+	console.log("S");
+
+} else if ((shirtWidth = 20 || shirtWidth > 18) && (shritLength === 29) && (shirtSleeve <= 8.38)){
+	console.log("M");
+
+} else if ((shirtWidth = 22 || shritLength > 20) && (shritLength === 30) && (shirtSleeve <= 8.63)){
+	console.log("L");
+
+} else if (shirtWidth <= 24 || shritLength > 22 && shritLength === 31 && shirtSleeve <= 8.88){
+	console.log("XL");
+
+} else if (shirtWidth <= 26 && shritLength === 33 && shirtSleeve <= 9.63){
+	console.log("2XL");
+
+} else if (shirtWidth <= 28 && shritLength === 34 && shirtSleeve <= 10.13){
+	console.log("3XL");
+
+} else{
+	console.log("Not a valid size");
+}
 
 </script>
 
