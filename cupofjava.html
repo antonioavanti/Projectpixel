@@ -3,49 +3,192 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Pixel art maker</title>
+	<title>Cup of Java</title>
+	<link rel="stylesheet" href="cupofjava.css">
 
 </head>
 <body>
-<script type="text/javascript">
+<script type="text/javascript" src="cupofjava.js"></script>
 
-	var celsius = 12;
-	var farenheit = celsius* 1.8 + 32;
-	console.log(celsius * 1.8 +32 );
+<a title="viewbug photo contests" href="https://www.viewbug.com/photo-contests"><img style="width:200px;" alt="viewbug photo contests" src="https://www.viewbug.com/media/images/layout/badges/superstar.png"/></a>
+<h1>Conditionals</h1>
+<h2>If...else statements</h2>
+<p>
+	If...else statements allow you to execute certain pieces of code based on a condition, or set of conditions, being met.<br><br>
+	<b>if</b> (this expression is true) {<br>
+		run this code<br>
+	} <b>else</b> {<br>
+		run this code<br>
+	}<br>
+	<h3>Example</h3>
+	var a = 1;<br>
+	var b = 2;<br>
 
-	var name = "James";
-	name[0];
-	console.log(name[0]);
+	if (a > b) {<br>
+  	console.log("a is greater than b");<br>
+	} else {<br>
+  	console.log("a is less than or equal to b");<br>
+	}<br>
+	Prints: "a is less than or equal to b"
+</p>
 
-	var quote = "Stay awhile and listen!";
-	console.log(quote[6]);
+<h2>Else If statements</h2>
+<p>
+	You're trying to decide what to wear tomorrow. If it is going to snow, then you’ll want to wear a coat. If it's not going to snow and it's going to rain, then you’ll want to wear a jacket. And if it's not going to snow or rain, then you’ll just wear what you have on.<br><br>
 
-	console.log("The man whispered,\"please speak to me.\"");
+	var weather = "sunny"; <br><br>
 
-	var str = "this string\
-	is broken\
-	across multiple\
-	lines.";
-	console.log(str);
+	<b>If</b> (weather === "snow") { <br>
+	     console.log("Bring a coat."); <br>
+	} <b>else if</b> (weather === "rain") { <br>
+	     console.log("Bring a rain jacket."); <br>
+	} <b>else</b> { <br>
+	     console.log("Wear what you have on."); <br>
+	}<br>
+</p>
 
-	var file = "The file located at \"C:\\\\Desktop\\My Documents\\Roster\\names\" contains the names on the roster";
-	console.log(file)
+<h2>Logical Operators</h2>
+<p>
+	Here’s the logical expression used to represent Julia’s weekend plans:<br><br>
 
-	console.log("yes"=="Yes")
-	console.log("Y"!="y")
+var colt = "not busy";<br>
+var weather = "nice";<br><br>
 
-	var my_string = "a";
-	var ASCII_value = my_string.charCodeAt(0);
-	console.log(ASCII_value)
+if (colt === "not busy" && weather === "nice") {<br>
+  console.log("go to the park");<br>
+}<br>
+Prints: "go to the park"<br><br>
 
-	console.log("green"=="blue");
-	console.log("green"=="green");
-	console.log("green"=="Green");
-	console.log("Green"=="green");
-	console.log("green">"blue");
-	console.log("green">"green");
-	console.log("green">"Green");
-	console.log("Green">"green");
-</script>
+Notice the && in the code above.<br><br>
+
+The && symbol is the logical AND operator, and it is used to combine two logical expressions into one larger logical expression. If both smaller expressions are true, then the entire expression evaluates to true. If either one of the smaller expressions is false, then the whole logical expression is false.<br><br>
+
+Another way to think about it is when the && operator is placed between the two statements, the code literally reads, "if Colt is not busy AND the weather is nice, then go to the park".
+</p>
+<h2>Truthy and falsy</h2>
+<p>
+	Here's the list of all the falsy values:<br><br>
+	<ol>
+		<li>the Boolean value <big><b>false</b></big></li>
+		<li>the <big><b>null</b></big></li>
+		<li>the <big><b>undefined</b></big></li>
+		<li>the number <big><b>0</b></big></li>
+		<li>the empty string <big><b>""</b></big></li>
+		<li>the odd value <big><b>NaN</b></big></li>
+	</ol>
+
+	<h3>Falsy value</h3>
+
+	A value is falsy if it converts to false when evaluated in a boolean context. For example, an empty String "" is falsy because, "" evaluates to false. You already know if...else statements, so let's use them to test the truthy-ness of "".
+
+	<h3>Truthy value</h3>
+
+	A value is truthy if it converts to true when evaluated in a boolean context. For example, the number 1 is truthy because, 1 evaluates to true. Let's use an if...else statement again to test this out:
+</p>
+<h2>Ternary Operator</h2>
+<p>
+	The ternary operator provides you with a shortcut alternative for writing lengthy if...else statements.Sometimes, you might find yourself with the following type of conditional.<br><br>
+
+	var isGoing = true;<br>
+	var color;<br>
+
+	if (isGoing) {<br>
+	  color = "green";<br>
+	} else {<br>
+	  color = "red";<br>
+	}<br><br>
+
+	console.log(color);<br><br>
+
+	conditional ? (if condition is true) : (if condition is false)<br><br>
+
+	To use the ternary operator, first provide a conditional statement on the left-side of the ?. Then, between the ? and : write the code that would run if the condition is true and on the right-hand side of the : write the code that would run if the condition is false. For example, you can rewrite the example code above as:<br><br>
+
+	var isGoing = true;<br>
+	var color = isGoing ? "green" : "red";<br>
+	console.log(color);<br>
+
+</p>
+<h2>Switch statement</h2>
+<p>
+	A switch statement is an another way to chain multiple else if statements that are based on the same value without using conditional statements. Instead, you just switch which piece of code is executed based on a value.
+	<div id="statement">
+		<div class="comparison">
+			<h3>Else if statement</h3>
+			<p>
+				if (option === 1) { <br>
+					  console.log("You selected option 1."); <br>
+					} else if (option === 2) { <br>
+					  console.log("You selected option 2."); <br>
+					} else if (option === 3) { <br>
+					  console.log("You selected option 3."); <br>
+					} else if (option === 4) { <br>
+					  console.log("You selected option 4."); <br>
+					} else if (option === 5) { <br>
+					  console.log("You selected option 5."); <br>
+					} else if (option === 6) { <br>
+					  console.log("You selected option 6."); <br>
+					}
+			</p>
+		</div>
+		<div class="comparison">
+			<h3>Swith statement</h3>
+			<p>
+				switch (option) { <br>
+					  case 1: <br>
+					    console.log("You selected option 1."); <br>
+					  case 2: <br>
+					    console.log("You selected option 2."); <br>
+					  case 3: <br>
+					    console.log("You selected option 3."); <br>
+					  case 4: <br>
+					    console.log("You selected option 4."); <br>
+					  case 5: <br>
+					    console.log("You selected option 5."); <br>
+					  case 6: <br>
+					    console.log("You selected option 6."); <br>
+					}
+			</p>
+		</div>
+	</div>
+</p>
+<h2>Falling through</h2>
+<p>
+	In some situations, you might want to leverage the "falling-through" behavior of switch statements to your advantage. For example, when your code follows a hierarchical-type structure.<br><br>
+
+	var tier = "nsfw deck"; <br>
+	var output = "You’ll receive "<br><br>
+
+	switch (tier) { <br>
+	  case "deck of legends": <br>
+	    output += "a custom card, "; <br>
+	  case "collector's deck": <br>
+	    output += "a signed version of the Exploding Kittens deck, "; <br>
+	  case "nsfw deck": <br>
+	    output += "one copy of the NSFW (Not Safe for Work) Exploding Kittens card game and "; <br>
+	  default: <br>
+	    output += "one copy of the Exploding Kittens card game."; <br>
+	} <br>
+
+	console.log(output); <br><br>
+
+	In this example, based on the successful Exploding Kittens Kickstarter campaign (a hilarious card game created by Elan Lee), each successive tier builds on the next by adding more to the output. Without any break statements in the code, after the switch statement jumps to the "nsfw deck", it continues to fall-through until reaching the end of the switch statement. <br><br>
+
+	Also, notice the default case. You can add a default case to a switch statement and it will be executed when none of the values match the value of the switch expression.<br><br>
+
+	var tier = "none"; <br>
+	var output = "You’ll receive "; <br><br>
+
+	switch (tier) { <br>
+	  ... <br>
+	  default: <br>
+	    output += "one copy of the Exploding Kittens card game."; <br>
+	} <br><br>
+
+	console.log(output);
+
+
+</p>
+
 </body>
 </html>
