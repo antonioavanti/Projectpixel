@@ -2,7 +2,6 @@
 	display: grid;
 	grid-template-columns: 50% 50%;
 	border: 0px solid black;
-	grid-area: 80%;
 	flex-direction: column;
 	padding: 10px;
 	grid-gap: 10px;

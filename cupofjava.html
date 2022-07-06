@@ -186,9 +186,24 @@ Another way to think about it is when the && operator is placed between the two 
 	} <br><br>
 
 	console.log(output);
-
-
 </p>
+
+<h2>LOOPS</h2>
+<p>
+	Three main pieces of information that any loop should have are:<br><br>
+
+	<big><b>When to start:</b></big> The code that sets up the loop — defining the starting value of a variable for instance.<br>
+	<big><b>When to stop:</b></big> The logical condition to test whether the loop should continue.<br>
+	<big><b>How to get to the next item:</b></big> The incrementing or decrementing step — for example, x = x * 3 or x = x - 1<br>
+	Here's a basic while loop example that includes all three parts.<br><br>
+
+	var start = 0; // <i>when to start</i><br>
+	while (start < 10) { // <i>when to stop</i><br>
+  		console.log(start);<br>
+  start = start + 2; // <i>how to get to the next item</i><br>
+}
+</p>
+
 
 </body>
 </html>
