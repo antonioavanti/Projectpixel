@@ -435,7 +435,7 @@ while (start < 10){ //when to stop
 
 //quiz 4-1: JuliaJames
 
-var x = 1
+var x = 1;
 
 while (x <= 20){
 
@@ -454,4 +454,55 @@ while (x <= 20){
 	}
 
 	x = x + 1;
+}
+
+//quiz 4-2 bottles of juice
+
+var num = 99;
+
+while (num >= 1){
+
+	if(num === 1){
+		console.log(num + " bottle of juice on the wall! " +num+ " bottle of juice! Take one down, pass it around..."+ (num-1) + " bottles of juice on the wall");
+
+	} else if (num === 2){
+		console.log(num + " bottles of juice on the wall! " +num+ " bottles of juice! Take one down, pass it around..." +(num-1)+ " bottle of juice on the wall");
+
+	} else {
+		console.log(num + " bottles of juice on the wall! "+num+ " bottles of juice! Take one down, pass it around..."+ (num-1)+ " bottles of juice on the wall");
+	}
+
+		num = num - 1;
+
+}
+
+//quiz 4-3 countdown, liftoff!
+
+var time = 60;
+
+while (time >= 0){
+
+	if(time === 0){
+		console.log("Solid rocket booster ignition and liftoff!");
+
+	} else if (time === 6){
+		console.log("Main engine start");
+
+	} else if (time === 10){
+		console.log("Activate main engine hydrogen burnoff system");
+
+	} else if (time === 16){
+		console.log("Activate launch pad sound suppression system");
+
+	} else if (time === 31){
+		console.log("Ground launch sequencer is go for auto sequence start");
+
+	} else if (time === 50){
+		console.log("Orbiter transfers from ground to internal power");
+
+	} else {
+		console.log("T-"+time+ " seconds");
+	}
+
+	time = time - 1;
 }
