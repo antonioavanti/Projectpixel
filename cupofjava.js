@@ -1,5 +1,5 @@
 
-var celsius = 12;
+/*var celsius = 12;
 	var farenheit = celsius* 1.8 + 32;
 	console.log(celsius * 1.8 +32 );
 
@@ -458,7 +458,7 @@ while (x <= 20){
 
 //quiz 4-2 bottles of juice
 
-var num = 99;
+/*var num = 99;
 
 while (num >= 1){
 
@@ -475,6 +475,7 @@ while (num >= 1){
 		num = num - 1;
 
 }
+
 
 //quiz 4-3 countdown, liftoff!
 
@@ -506,3 +507,48 @@ while (time >= 0){
 
 	time = time - 1;
 }
+
+
+//for loops
+
+for (var i = 0; i < 6; i = i + 1) {
+	console.log("The value of i in this step is "+ i);
+}
+
+// nested loops
+
+for (var x = 0; x < 5; x = x + 1) {
+  for (var y = 0; y < 3; y = y + 1) {
+    console.log(x + "," + y);
+  }
+}
+
+//Increment and decrement
+
+for (var i = 4; i >= 0; i--) {
+	console.log(i +" is more than the next line" );
+	}
+
+	//quiz 4-4: Changing the loop
+
+	 for(var x = 9; x >= 1; x = x-1){
+	 	console.log("hello "+ x);
+	 }
+
+	 //quiz 4-7: Factorials!
+
+	 let solution = 1;
+
+	 for(let a = 1; a <= 12; a++){
+	 	solution *= a;
+	 }
+	 console.log(solution)
+
+	 //quiz 4-8: Find my seat
+
+	/* for(var row = 0; row <= 26; row = row + 1){
+	 		for(var seat = 0; seat <= 99; seat = seat + 1){
+	 			console.log("Row " +row+", Seat "+seat)
+	 		}
+	 }
+	 */

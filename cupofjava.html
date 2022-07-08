@@ -6,9 +6,11 @@
 	<title>Cup of Java</title>
 	<link rel="stylesheet" href="cupofjava.css">
 
+
 </head>
 <body>
 <script type="text/javascript" src="cupofjava.js"></script>
+<script type="text/javascript" src="cupofjava2.js"></script>
 
 <a title="viewbug photo contests" href="https://www.viewbug.com/photo-contests"><img style="width:200px;" alt="viewbug photo contests" src="https://www.viewbug.com/media/images/layout/badges/superstar.png"/></a>
 <h1>Conditionals</h1>
@@ -189,6 +191,7 @@ Another way to think about it is when the && operator is placed between the two 
 </p>
 
 <h2>LOOPS</h2>
+<h3>While loop</h3>
 <p>
 	Three main pieces of information that any loop should have are:<br><br>
 
@@ -202,6 +205,23 @@ Another way to think about it is when the && operator is placed between the two 
   		console.log(start);<br>
   start = start + 2; // <i>how to get to the next item</i><br>
 }
+</p>
+<h3>For loop</h3>
+<p>
+	The for loop explicitly forces you to define the start point, stop point, and each step of the loop. In fact, you'll get an Uncaught SyntaxError: Unexpected token ) if you leave out any of the three required pieces.<br><br>
+
+	for ( start; stop; step ) { <br>
+  // do this thing<br>
+}<br>
+	Here's an example of a for loop that prints out the values from 0 to 5. Notice the semicolons separating the different statements of the for loop: var i = 0; i < 6; i = i + 1. Refer to JS file for example.<br><br>
+
+	<h3>Increment and Decrement</h3>
+	x++ or ++x // same as x = x + 1 <br>
+	x-- or --x // same as x = x - 1 <br>
+	x += 3 // same as x = x + 3 <br>
+	x -= 6 // same as x = x - 6 <br>
+	x *= 2 // same as x = x * 2 <br>
+	x /= 5 // same as x = x / 5
 </p>
 
 
