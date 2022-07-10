@@ -1,5 +1,5 @@
 
-var celsius = 12;
+/*var celsius = 12;
 	var farenheit = celsius* 1.8 + 32;
 	console.log(celsius * 1.8 +32 );
 
@@ -423,3 +423,132 @@ switch (education){
 
 }
 console.log('In 2015, a person with '+education+ " earned an average of $"+salary.toLocaleString("en-US")+"/year")
+
+//LOOPS
+
+var start = 0 // when to start
+
+while (start < 10){ //when to stop
+		console.log(start);
+		start = start + 2; // how to get to the next item
+}
+
+//quiz 4-1: JuliaJames
+
+var x = 1;
+
+while (x <= 20){
+
+	if (x % 3 === 0 && x % 5 === 0){
+		console.log("JuliaJames");
+
+	} else if ( x % 5 === 0){
+		console.log("James");
+
+
+	} else if (x % 3 === 0){
+		console.log("Julia");
+
+	} else{
+		console.log(x);
+	}
+
+	x = x + 1;
+}
+
+//quiz 4-2 bottles of juice
+
+/*var num = 99;
+
+while (num >= 1){
+
+	if(num === 1){
+		console.log(num + " bottle of juice on the wall! " +num+ " bottle of juice! Take one down, pass it around..."+ (num-1) + " bottles of juice on the wall");
+
+	} else if (num === 2){
+		console.log(num + " bottles of juice on the wall! " +num+ " bottles of juice! Take one down, pass it around..." +(num-1)+ " bottle of juice on the wall");
+
+	} else {
+		console.log(num + " bottles of juice on the wall! "+num+ " bottles of juice! Take one down, pass it around..."+ (num-1)+ " bottles of juice on the wall");
+	}
+
+		num = num - 1;
+
+}
+
+
+//quiz 4-3 countdown, liftoff!
+
+var time = 60;
+
+while (time >= 0){
+
+	if(time === 0){
+		console.log("Solid rocket booster ignition and liftoff!");
+
+	} else if (time === 6){
+		console.log("Main engine start");
+
+	} else if (time === 10){
+		console.log("Activate main engine hydrogen burnoff system");
+
+	} else if (time === 16){
+		console.log("Activate launch pad sound suppression system");
+
+	} else if (time === 31){
+		console.log("Ground launch sequencer is go for auto sequence start");
+
+	} else if (time === 50){
+		console.log("Orbiter transfers from ground to internal power");
+
+	} else {
+		console.log("T-"+time+ " seconds");
+	}
+
+	time = time - 1;
+}
+
+
+//for loops
+
+for (var i = 0; i < 6; i = i + 1) {
+	console.log("The value of i in this step is "+ i);
+}
+
+// nested loops
+
+for (var x = 0; x < 5; x = x + 1) {
+  for (var y = 0; y < 3; y = y + 1) {
+    console.log(x + "," + y);
+  }
+}
+
+//Increment and decrement
+
+for (var i = 4; i >= 0; i--) {
+	console.log(i +" is more than the next line" );
+	}
+
+	//quiz 4-4: Changing the loop
+
+	 for(var x = 9; x >= 1; x = x-1){
+	 	console.log("hello "+ x);
+	 }
+
+	 //quiz 4-7: Factorials!
+
+	 let solution = 1;
+
+	 for(let a = 1; a <= 12; a++){
+	 	solution *= a;
+	 }
+	 console.log(solution)
+
+	 //quiz 4-8: Find my seat
+
+	/* for(var row = 0; row <= 26; row = row + 1){
+	 		for(var seat = 0; seat <= 99; seat = seat + 1){
+	 			console.log("Row " +row+", Seat "+seat)
+	 		}
+	 }
+	 */

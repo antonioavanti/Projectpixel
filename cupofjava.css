@@ -2,7 +2,6 @@
 	display: grid;
 	grid-template-columns: 50% 50%;
 	border: 0px solid black;
-	grid-area: 80%;
 	flex-direction: column;
 	padding: 10px;
 	grid-gap: 10px;
@@ -16,4 +15,51 @@
 	width: 60%;
 	justify-content: center;
 	align-content: center;
+}
+
+html{
+	font: 170%;
+}
+
+p{
+	font-family: museo-sans,sans-serif;
+	font-weight: 200;
+	font-style: normal;
+	font-size: 130%;
+}
+
+header{
+	background-color: aliceblue;
+
+}
+
+main{
+	background-color: azure;
+}
+
+footer{
+	background-color: cadetblue;
+	text-align: center;
+}
+
+h1{
+	font-family: abril-fatface, serif;
+	font-weight: 400;
+	font-style: normal;
+	font-size: 600%;
+	text-align: center;
+}
+
+h2{
+	font-family: trasandina,sans-serif;
+	font-weight: 400;
+	font-style: normal;
+	font-size: 350%;
+}
+
+h3{
+	font-family: trasandina,sans-serif;
+	font-weight: 400;
+	font-style: normal;
+	font-size: 200%;
 }

@@ -6,9 +6,12 @@
 	<title>Cup of Java</title>
 	<link rel="stylesheet" href="cupofjava.css">
 
+
 </head>
 <body>
 <script type="text/javascript" src="cupofjava.js"></script>
+<script type="text/javascript" src="cupofjava2.js"></script>
+<script type="text/javascript" src="cupofjava3.js"></script>
 
 <a title="viewbug photo contests" href="https://www.viewbug.com/photo-contests"><img style="width:200px;" alt="viewbug photo contests" src="https://www.viewbug.com/media/images/layout/badges/superstar.png"/></a>
 <h1>Conditionals</h1>
@@ -186,9 +189,126 @@ Another way to think about it is when the && operator is placed between the two 
 	} <br><br>
 
 	console.log(output);
-
-
 </p>
+
+<h2>LOOPS</h2>
+<h3>While loop</h3>
+<p>
+	Three main pieces of information that any loop should have are:<br><br>
+
+	<big><b>When to start:</b></big> The code that sets up the loop — defining the starting value of a variable for instance.<br>
+	<big><b>When to stop:</b></big> The logical condition to test whether the loop should continue.<br>
+	<big><b>How to get to the next item:</b></big> The incrementing or decrementing step — for example, x = x * 3 or x = x - 1<br>
+	Here's a basic while loop example that includes all three parts.<br><br>
+
+	var start = 0; // <i>when to start</i><br>
+	while (start < 10) { // <i>when to stop</i><br>
+  		console.log(start);<br>
+  start = start + 2; // <i>how to get to the next item</i><br>
+}
+</p>
+<h3>For loop</h3>
+<p>
+	The for loop explicitly forces you to define the start point, stop point, and each step of the loop. In fact, you'll get an Uncaught SyntaxError: Unexpected token ) if you leave out any of the three required pieces.<br><br>
+
+	for ( start; stop; step ) { <br>
+  // do this thing<br>
+}<br>
+	Here's an example of a for loop that prints out the values from 0 to 5. Notice the semicolons separating the different statements of the for loop: var i = 0; i < 6; i = i + 1. Refer to JS file for example.<br><br>
+
+	<h3>Increment and Decrement</h3>
+	x++ or ++x // same as x = x + 1 <br>
+	x-- or --x // same as x = x - 1 <br>
+	x += 3 // same as x = x + 3 <br>
+	x -= 6 // same as x = x - 6 <br>
+	x *= 2 // same as x = x * 2 <br>
+	x /= 5 // same as x = x / 5
+</p>
+<h1>FUNCTIONS</h1>
+<p>Functions allow you to package up lines of code that you can use (and oftern reuse) in your programs.</p>
+<h2>Parts of a function</h2>
+<p>
+	Now, to get your function to do something, you have to invoke or call the function using the function name, followed by parentheses with any arguments that are passed into it. Functions are like machines. You can build the machine, but it won't do anything unless you also turn it on. Here's how you would call the sayHello() function from before, and then use the return value to print to the console:<br><br>
+
+	// declares the sayHello function<br>
+	function sayHello() {<br>
+	  var message = "Hello!"<br>
+	  return message; // returns value instead of printing it<br>
+	}<br>
+
+	// function returns "Hello!" and console.log prints the return value<br>
+	console.log(sayHello());<br><br>
+
+	<big><b>Parameters vs. Arguments</b></big><br><br>
+	At first, it can be a bit tricky to know when something is either a parameter or an argument. The key difference is in where they show up in the code. A <b>parameter</b> is always going to be a variable name and appears in the function declaration. On the other hand, an <b>argument</b> is always going to be a value (i.e. any of the JavaScript data types - a number, a string, a boolean, etc.) and will always appear in the code when the function is called or invoked.<br><br>
+
+	It’s important to understand that return and print are not the same thing. Printing a value to the JavaScript console only displays a value (that you can view for debugging purposes), but the value it displays can't really be used for anything more than that. For this reason, you should remember to only use console.log to test your code in the JavaScript console.
+
+	Paste the following function declaration and function invocation (check cupofjava2) into the JavaScript console to see the difference between logging (printing) and returning:<br><br>
+
+	<h3>Functions as parameters (<small>refer to example in 2js</small>)</h3>
+	Being able to store a function in a variable makes it really simple to pass the function into another function. A function that is passed into another function is called a callback. Let's say you had a helloCat() function, and you wanted it to return "Hello" followed by a string of "meows" like you had with catSays. Well, rather than redoing all of your hard work, you can make helloCat() accept a callback function, and pass in catSays.<br><br>
+
+	// function expression catSays<br>
+	var catSays = function(max) {<br>
+	  var catMessage = "";<br>
+	  for (var i = 0; i < max; i++) {<br>
+	    catMessage += "meow ";<br>
+	  }<br>
+	  return catMessage;<br>
+	};<br><br>
+
+	// function declaration helloCat accepting a callback<br>
+	function helloCat(callbackFunc) {<br>
+	  return "Hello " + callbackFunc(3);<br>
+	}<br><br>
+
+	// pass in catSays as a callback function<br>
+	helloCat(catSays);<br><br>
+
+	<h3>Inline function expressions (<small>refer to example in 2js</small>)</h3><br>
+
+	A function expression is when a function is assigned to a variable. And, in JavaScript, this can also happen when you pass a function inline as an argument to another function. Take the favoriteMovie example for instance:<br><br>
+
+	// Function expression that assigns the function displayFavorite<br>
+	// to the variable favoriteMovie<br>
+	var favoriteMovie = function displayFavorite(movieName) {<br>
+	  console.log("My favorite movie is " + movieName);<br>
+	};<br><br>
+
+	// Function declaration that has two parameters: a function for displaying<br>
+	// a message, along with a name of a movie<br>
+	function movies(messageFunction, name) {<br>
+	  messageFunction(name);<br>
+	}<br>
+
+	// Call the movies function, pass in the favoriteMovie function and name of movie<br>
+	movies(favoriteMovie, "Finding Nemo");<br>
+	Returns: My favorite movie is Finding Nemo<br><br>
+
+	But you could have bypassed the first assignment of the function, by passing the function to the movies() function inline.<br>
+
+	// Function declaration that takes in two arguments: a function for displaying<br>
+	// a message, along with a name of a movie<br>
+	function movies(messageFunction, name) {<br>
+	  messageFunction(name);<br>
+	}<br>
+
+	// Call the movies function, pass in the function and name of movie<br>
+	movies(function displayFavorite(movieName) {<br>
+	  console.log("My favorite movie is " + movieName);<br>
+	}, "Finding Nemo");<br>
+	Returns: My favorite movie is Finding Nemo<br><br>
+
+	This type of syntax, writing function expressions that pass a function into another function inline, is really common in JavaScript. It can be a little tricky at first, but be patient, keep practicing, and you'll start to get the hang of it!<br><br>
+
+	<h3>Why use anonymous inline function expressions?</h3>
+	Using an anonymous inline function expression might seem like a very not-useful thing at first. Why define a function that can only be used once and you can't even call it by name?<br><br>
+
+	Anonymous inline function expressions are often used with function callbacks that are probably not going to be reused elsewhere. Yes, you could store the function in a variable, give it a name, and pass it in like you saw in the examples above. However, when you know the function is not going to be reused, it could save you many lines of code to just define it inline.
+
+
+	</p>
 
 </body>
 </html>

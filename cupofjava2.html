@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Cup of Jave 2</title>
+	<link rel="stylesheet" href="cupofjava.css">
+	<link rel="stylesheet" href="https://use.typekit.net/riu7bcu.css">
+</head>
+<body>
+<script type="text/javascript" src="cupofjava.js"></script>
+<script type="text/javascript" src="cupofjava2.js"></script>
+<script type="text/javascript" src="cupofjava3.js"></script>
+
+<header>
+	<h1>ARRAYS</h1>
+
+</header>
+<main>
+<h2>Creating an Array</h2>
+<p>
+	An array is useful because it stores multiple values into a single, organized data structure. You can define a new array by listing values separated with commas between square brackets []. But strings aren’t the only type of data you can store in an array. You can also store numbers, booleans… and really anything! You can even store an array in an array to create a nested array!
+</p>
+
+<h3>Indexing</h3>
+<p>
+	Remember that elements in an array are indexed starting at the position 0. To access an element in an array, use the name of the array immediately followed by square brackets containing the index of the value you want to access. See example in 3js--5.<br><br>
+
+	<img src="images\arrayindex.jpg"><br><br>
+
+	Finally, if you want to change the value of an element in array, you can do so by setting it equal to a new value. See example in 3js--7.
+</p>
+
+<h2>Properties and Methods</h2>
+<h3>Array.length</h3>
+<p>You can find the length of an array by using its length property. See example is 3js--26</p>
+
+<h3>Push</h3>
+
+<p>You can use the push() method to add elements to the end of an array. You can represent the spread of donuts using an array.<br><br>
+
+	var donuts = ["glazed", "chocolate frosted", "Boston creme", "glazed cruller", "cinnamon sugar", "sprinkled"];
+
+	<img src="images\donut-spread.jpeg"><br>
+
+	Then, you can push donuts onto the end of the array using the push() method.<br><br>
+
+	donuts.push("powdered"); // pushes "powdered" onto the end of the `donuts` array<br><br>
+
+	Returns: 7<br>
+	donuts array: ["glazed", "chocolate frosted", "Boston creme", "glazed cruller", "cinnamon sugar", "sprinkled", "powdered"]
+
+</p>
+
+<h3>Pop</h3>
+
+<p>Alternatively, you can use the pop() method to remove elements from the end of an array. With the pop() method you don’t need to pass a value; instead, pop() will always remove the last element from the end of the array. Also, pop() returns the element that has been removed in case you need to use it.</p>
+
+<h3>Splice</h3>
+
+<p>splice() is another handy method that allows you to add and remove elements from anywhere within an array. While push() and pop() limit you to adding and removing elements from the end of an array, splice() lets you specify the index location to add new elements, as well as the number of elements you'd like to delete (if any). See example in 3js--28.<br><br>
+<div id="statement">
+	<div class="comparison">
+		<p>
+			<big><b>Following is the syntax of splice() method:</b></big> arrayName.splice(arg1, arg2, item1, ....., itemX); where,<br><br>
+
+			arg1 = Mandatory argument. Specifies the starting index position to add/remove items. You can use a negative value to specify the position from the end of the array e.g., -1 specifies the last element.<br><br>
+
+			arg2 = Optional argument. Specifies the count of elements to be removed. If set to 0, no items will be removed.<br><br>
+
+			item1, ....., itemX are the items to be added at index position arg1<br><br>
+
+			splice() method returns the item(s) that were removed.
+		</p>
+	</div>
+	<div>
+		<iframe width="660" height="420" src="https://www.youtube.com/embed/x7VmszJALtM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	</div>
+</div>
+</p>
+
+</main>
+<footer>
+	<h3>Notes by Antonio Avanti</h3>
+</footer>
+</body>
+</html>
