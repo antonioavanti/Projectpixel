@@ -78,7 +78,49 @@
 	</div>
 </div>
 </p>
+<h2>Array loops</h2>
+<p>
+	Once the data is in the array, you want to be able to efficiently access and manipulate each element in the array without writing repetitive code for each element.To loop through an array, you can use a variable to represent the index in the array, and then loop over that index to perform whatever manipulations your heart desires.<br><br>
 
+	var donuts = ["jelly donut", "chocolate donut", "glazed donut"];<br>
+
+	// the variable `i` is used to step through each element in the array<br>
+	for (var i = 0; i < donuts.length; i++) {<br>
+	    donuts[i] += " hole";<br>
+	    donuts[i] = donuts[i].toUpperCase();<br>
+	}<br>
+</p>
+<h3>ForEach Loop (3js--59</h3>
+<p>
+	The forEach() method gives you an alternative way to iterate over an array, and manipulate each element in the array with an inline function expression.<br><br>
+
+	var donuts = ["jelly donut", "chocolate donut", "glazed <br>donut"];<br><br>
+
+	donuts.forEach(function(donut) {<br>
+	  donut += " hole";<br>
+	  donut = donut.toUpperCase();<br>
+	  console.log(donut);<br>
+	});<br><br>
+
+	Notice that the forEach() method iterates over the array without the need of an explicitly defined index. In the example above, donut corresponds to the element in the array itself. This is different from a for or while loop where an index is used to access each element in the array:<br><br>
+
+	for (var i = 0; i < donuts.length; i++) {<br>
+  donuts[i] += " hole";<br>
+  donuts[i] = donuts[i].toUpperCase();<br>
+  console.log(donuts[i]);<br>
+}<br>
+</p>
+
+<h3>Parameters (3js--66)</h3>
+<p>
+	The function that you pass to the forEach() method can take up to three parameters. You can call them anything.<br><br>
+
+	words = ["cat", "in", "hat"];<br>
+	words.forEach(function(word, num, all) {<br>
+	  console.log("Word " + num + " in " + all.toString() + " is " + word);<br>
+	});<br>
+
+</p>
 </main>
 <footer>
 	<h3>Notes by Antonio Avanti</h3>
