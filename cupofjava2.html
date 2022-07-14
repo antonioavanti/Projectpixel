@@ -73,9 +73,7 @@
 			splice() method returns the item(s) that were removed.
 		</p>
 	</div>
-	<div>
-		<iframe width="660" height="420" src="https://www.youtube.com/embed/x7VmszJALtM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-	</div>
+
 </div>
 </p>
 <h2>Array loops</h2>
@@ -119,7 +117,44 @@
 	words.forEach(function(word, num, all) {<br>
 	  console.log("Word " + num + " in " + all.toString() + " is " + word);<br>
 	});<br>
+</p>
 
+<h2>Map (3js--86</h2>
+<p>
+	With the map() method, you can take an array, perform some operation on each element of the array, and return a new array.
+</p>
+
+<h2>Array of arrays</h2>
+<p>
+	You could use an array of arrays that has the name of each item associated with its position in a box...for example.<br><br>
+
+	var donutBox = [<br>
+	  ["glazed", "chocolate glazed", "cinnamon"],<br>
+	  ["powdered", "sprinkled", "glazed cruller"],<br>
+	  ["chocolate cruller", "Boston creme", "creme de leche"]<br>
+	];<br><br>
+
+	If you wanted to loop over the donut box and display each donut (along with its position in the box!) you would start with writing a for loop to loop over each row of the box of donuts:<br><br>
+
+	var donutBox = [<br>
+	  ["glazed", "chocolate glazed", "cinnamon"],<br>
+	  ["powdered", "sprinkled", "glazed cruller"],<br>
+	  ["chocolate cruller", "Boston creme", "creme de leche"]<br>
+	];<br><br>
+
+	// here, donutBox.length refers to the number of rows of donuts<br>
+	for (var row = 0; row < donutBox.length; row++) {<br>
+	  console.log(donutBox[row]);<br>
+	}<br><br>
+
+	Since each row is an array of donuts, you next need to set up an inner-loop to loop over each cell in the arrays.<br><br>
+
+	for (var row = 0; row < donutBox.length; row++) {<br>
+	  // here, donutBox[row].length refers to the length of the donut array currently being looped over<br>
+	  for (var column = 0; column < donutBox[row].length; column++) {<br>
+	    console.log(donutBox[row][column]);<br>
+	  }<br>
+	}<br>
 </p>
 </main>
 <footer>
