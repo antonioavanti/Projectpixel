@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Objects</title>
+	<link rel="stylesheet" href="cupofjava.css">
+</head>
+<body>
+<script type="text/javascript" src="cupofjava4.js"></script>
+<header>
+	<h1>Objects</h1>
+</header>
+<main>
+<h2>Object-literal notation (4js--25)</h2>
+<p>
+	There are some important things to remember when structuring an object literal:<br><br>
+
+	<ul>
+		<li>The "key" (representing a property or method name) and its "value" are separated from each other by a colon</li>
+		<li>The key: value pairs are separated from each other by commas</li>
+		<li>The entire object is wrapped inside curly braces { }</li>
+	</ul>
+	<br>
+	var sister = {<br>
+	  name: "Sarah", <br>
+	  age: 23,<br>
+	  parents: [ "alice", "andy" ],<br>
+	  siblings: ["julia"],<br>
+	  favoriteColor: "purple",<br>
+	  pets: true<br>
+	};<br><br>
+
+	Here's how you can retrieve some information from the object above:<br><br>
+
+	// two equivalent ways to use the key to return its value<br>
+	sister["parents"] // returns [ "alice", "andy" ]<br>
+	sister.parents // also returns ["alice", "andy"]<br><br>
+
+	Using <big><b>sister["parents"]</b></big> is called <big><b>bracket notation</b></big> (because of the brackets!) and using <big><b>sister.parents</b></big> is called <big><b>dot notation</b></big> (because of the dot!).
+</p>
+
+<h3>What about methods</h3>
+<p>
+	The sister object above contains a bunch of properties about my sister, but doesn't really say what my sister does. For instance, let's say my sister likes to paint. You might have a paintPicture() method that returns "Sarah paints a picture!" whenever you call it. The syntax for this is pretty much exactly the same as how you defined the properties of the object. The only difference is, the value in the key:value pair will be a function.<br><br>
+
+	var sister = {<br>
+	  name: "Sarah",<br>
+	  age: 23,<br>
+	  parents: [ "alice", "andy" ],<br>
+	  siblings: ["julia"],<br>
+	  favoriteColor: "purple",<br>
+	  pets: true,<br>
+	  paintPicture: function() { return "Sarah paints!"; }<br>
+	};<br><br>
+
+	sister.paintPicture();<br><br>
+
+	<big><b>Returns:</b></big> "Sarah paints!"
+</p>
+</main>
+<footer>Notes by Antonio Avanti</footer>
+</body>
+</html>
