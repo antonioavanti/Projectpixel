@@ -17,6 +17,10 @@
 	align-content: center;
 }
 
+.subHeading{
+	text-align: center;
+}
+
 html{
 	font: 170%;
 }
