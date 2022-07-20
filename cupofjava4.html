@@ -113,7 +113,68 @@
 
 		const outerResults = document.querySelector('#pick-me').outerHTML;<br>
 		console.log(outerResults); // logs the string: "<!--h1 <br>id="pick-me">Greetings To <span-->	All<!--/span>!</h1-->"<br>
+			<br>
+		<big><b>Appending HTML to an element</b></big><br><br>
 
+		For example, we can append a new list item to li to the existing list ul:<br><br>
+
+		HTML
+			<ul id="list">
+  			<li><a href="#">Item 1</a></li>
+  			<li><a href="#">Item 2</a></li>
+  			<li><a href="#">Item 3</a></li>
+			</ul>
+
+			JavaScript<br>
+			const list = document.getElementById("list");<br>
+
+			list.innerHTML += `<li><a href="#">Item ${list.children.length + 1}</a></li>`;<br>
+
+	</p>
+	<h2>An Element's Text Content - Version 2!</h2>
+	<p>
+		 .innerText will get the visible text of the element. This is an important distinction! If CSS is used to hide any text inside that element, .innerText will not return that text, while .textContent will return it. And it's not just the hiding/showing nature of CSS that .innerText adheres to, .innerText will also honor changes to things like capitalization.
+	</p>
+	<h2>Adding new content to the page</h2>
+	<p>
+		You may have noticed that using document.createElement() to create an element didn't actually add that newly created element anywhere on the page! Creating an element...just creates it. It doesn't add it to the DOM. Since the element isn't added to the DOM, it doesn't appear in the page (if you remember, the DOM is the parsed representation of the page). So, now that we can create brand new elements, we need to be able to add them to the DOM so that they'll show up on the page.<br><br>
+
+		We can use the .appendChild() method to add an element to the page! Before we see how this element works, let's quickly define the word "append". There are several different definitions of the word, but I like the wording of the Cambridge Dictionary's the best:<br><br>
+
+		<em>to add something to the end of a piece of writing</em><br><br>
+
+		Now, to use the .appendChild() method, it needs to be called on another element, not the document object!<br>
+
+		// create a brand new <span> element<br>
+		const newSpan = document.createElement('span');<br><br>
+
+		// select the first (main) heading of the page<br>
+		const mainHeading = document.querySelector('h1');<br><br>
+
+		// add the <span> element as the last child element of the main heading<br>
+		mainHeading.appendChild(newSpan);<br>
+	</p>
+	<h2>Inserting HTML In Other Locations</h2>
+	<p>
+		By definition, the .appendChild() method will add an element as the last child of the parent element. It's impossible to put it as the first child or anywhere else...it has to be the last child. Wouldn't it be nice if there were a little flexibility in where we could add the child element?<br>
+
+		Enter the .insertAdjacentHTML() method! The .insertAdjacentHTML() method has to be called with two arguments:<br><br>
+
+		the location of the HTML<br>
+		the HTML text that is going to be inserted<br>
+		The first argument to this method will let us insert the new HTML in one of four different locations<br><br>
+
+		beforebegin – inserts the HTML text as a previous sibling<br>
+		afterbegin – inserts the HTML text as the first child<br>
+		beforeend – inserts the HTML text as the last child<br>
+		afterend – inserts the HTML text as a following sibling<br>
+
+		Here's how we'd call .insertAdjacentHTML():<br><br>
+
+		const mainHeading = document.querySelector('#main-heading');<br>
+		const htmlTextToAdd = 'h2>Skydiving is fun!/h2>';<br><br>
+
+		mainHeading.insertAdjacentHTML('afterend', htmlTextToAdd);<br>
 	</p>
 
 
