@@ -176,6 +176,91 @@
 
 		mainHeading.insertAdjacentHTML('afterend', htmlTextToAdd);<br>
 	</p>
+	<h2>Style page Content</h2>
+	<p>
+		we can access an element's style attribute using the .style property!<br><br>
+
+		const mainHeading = document.querySelector('h1');<br><br>
+
+		mainHeading.style.color = 'red';<br>
+		Now, I want to point out that when using the .style property, you can only modify one CSS style at a time. That's why the previous code has .style.color = 'red' and not just .style = 'red'.<br>
+		A style declaration is reset by setting it to null or an empty string, e.g., elt.style.color = null.
+	</p>
+	<h3>Adding Multiple Styles At Once</h3>
+	<p>
+		<big><b>.style.cssText</b></big><br><br>
+
+		const mainHeading = document.querySelector('h1');
+
+		mainHeading.style.cssText = 'color: blue; background-color: orange; font-size: 3.5em';
+	</p>
+	<h3>Setting an Element's Attribute</h3>
+	<p>
+		Another way to set styles for an element is to bypass the .style.<-property> and .style.cssText properties altogether and use the .setAttribute() method:<br><br>
+
+		const mainHeading = document.querySelector('h1');<br><br>
+
+		mainHeading.setAttribute('style', 'color: blue;<br> background-color: orange; font-size: 3.5em;');<br>
+		The setAttribute() method is not just for styling page elements. You can use this method to set any attribute for an element. If you want to give an element an ID, you can do that!:<br>
+		const mainHeading = document.querySelector('h1');
+		
+		// add an ID to the heading's sibling element
+		mainHeading.nextElementSibling.setAttribute('id', 'heading-sibling');<br><br>
+
+		// use the newly added ID to access that element
+		document.querySelector('#heading-sibling').style.backgroundColor = 'red';
+	</p>
+	<h3>Accessing an Element's class</h3>
+	<p>
+		The first element property we'll look at is the .className property. This property returns a string of all of the element's classes. If an element has the following HTML:<br><br>
+
+		<-h1 id="main-heading" class="ank-student jpk-modal">Learn Web Development at Udacity<-/h1>
+		We could use .className to access the list of classes:<br><br>
+
+		const mainHeading = document.querySelector('#main-heading');<br><br>
+
+		// store the list of classes in a variable<br>
+const listOfClasses = mainHeading.className;<br><br>
+
+		// logs out the string "ank-student jpk-modal"<br>
+console.log(listOfClasses);<br>
+The .className property returns a space-separated string of the classes. This isn't the most ideal format, unfortunately. We can, however, convert this space-separated string into an array using the JavaScript string method, .split():<br><br>
+
+		const arrayOfClasses = listOfClasses.split(' ');<br><br>
+
+		// logs out the array of strings ["ank-student", "jpk-modal"]<br>
+console.log(arrayOfClasses);<br>
+Now that we have an array of classes, we can do any data-intensive calculations:<br><br>
+
+		use a for loop to loop through the list of class names<br>
+use .push() to add an item to the list<br>
+use .pop() to remove an item from the list<br>
+.className is a property, so we can set its value just by assigning a string to the property:<br><br>
+
+mainHeading.className = "im-the-new-class";<br>
+The above code erases any classes that were originally in the element's class attribute and replaces it with the single class im-the-new-class.<br><br>
+
+Since .className returns a string, it makes it hard to add or remove individual classes. As I mentioned earlier, we can convert the string to an array and then use different Array Methods to search for a class remove it from the list, and then update the .className with the remaining classes. However, we don't want to do all of that work! Let's use the newer .classList property.<br><br>
+
+The .classList Property<br>
+The .classList property is newer than the .className property, but is much nicer, check it out:<br><br>
+
+<-h1 id="main-heading" class="ank-student jpk-modal">Learn Web Development at Udacity<-/h1><br>
+const mainHeading = document.querySelector('#main-heading');<br><br>
+
+// store the list of classes in a variable<br>
+const listOfClasses = mainHeading.classList;<br>
+
+// logs out ["ank-student", "jpk-modal"]<br>
+console.log(listOfClasses);<br><br>
+
+The .classList property has a number of properties of its own. Some of the most popularly used ones are:<br><br>
+
+<big>.add()</big> - to add a class to the list<br>
+<big>.remove()</big> - to remove a class from the list<br>
+<big>.toggle()</big> - to add the class if it doesn't exists or remove it from the list if it does already exist<br>
+<big>.contains()</big> - returns a boolean based on if the class exists in the list or not<br>
+	</p>
 
 
 </main>
