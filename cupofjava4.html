@@ -145,13 +145,13 @@
 
 		Now, to use the .appendChild() method, it needs to be called on another element, not the document object!<br>
 
-		// create a brand new <span> element<br>
+		// create a brand new <-span> element<br>
 		const newSpan = document.createElement('span');<br><br>
 
 		// select the first (main) heading of the page<br>
 		const mainHeading = document.querySelector('h1');<br><br>
 
-		// add the <span> element as the last child element of the main heading<br>
+		// add the <-span> element as the last child element of the main heading<br>
 		mainHeading.appendChild(newSpan);<br>
 	</p>
 	<h2>Inserting HTML In Other Locations</h2>
@@ -261,6 +261,59 @@ The .classList property has a number of properties of its own. Some of the most 
 <big>.toggle()</big> - to add the class if it doesn't exists or remove it from the list if it does already exist<br>
 <big>.contains()</big> - returns a boolean based on if the class exists in the list or not<br>
 	</p>
+<h2>Working with browser events</h2>
+<p>
+	<big><b>EventTarget</b></big><===<big><b>Node</b></big><===<big><b>Element</b></big><br><br>
+
+		As you can see from the image above, the EventTarget is at the top of the chain. This means that it does not inherit any properties or methods from any other interfaces. However, every other interface inherits from it and therefore contain its properties and methods. This means that each of the following is an "event target";<br>
+
+		<ul>
+			<li>the document object</li>
+			<li>the paragraph element</li>
+			<li>the video element</li>
+			<li>etc</li>
+		</ul>
+
+		Remember that both the document object and any DOM element can be an event target. And again, why is this?...because both the Element Interface and the Document Interface inherit from the EventTarget Interface. So any individual element inherits from the Element Interface, which in turn inherits from the EventTarget Interface. Likewise, the document object comes from the Document Interface, which in turn inherits from the EventTarget Interface.
+</p>
+<h3>Adding an Event Listener</h3>
+<p>
+	Sample code on how to set it up:<br><br>
+
+	<-event-target>.addEventListener(<-event-to-listen-for>, <-function-to-run-when-an-event-happens>);
+		<a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener" target="blank">MDN documentation</a><br><br>
+
+	So the event listener needs three things:
+
+	<ol>
+		<li>an event target - this is called the target</li>
+		<li>the type of event to listen for - this is called the type</li>
+		<li>a function to run when the event occurs - this is called the listener</li>
+	</ol>
+</p>
+<h3>Removing an Event Listener</h3>
+<p>
+	<-event-target>.removeEventListener(<-event-to-listen-for>, <-function-to-remove>);<br><br>
+
+	Remember, the listener function must be the exact same function as the one used in the .addEventListener() call...not just an identical looking function. Let's look at a couple of examples.
+
+	This code will successfully add and then remove an event listener:<br><br>
+
+	function myEventListeningFunction() {<br>
+    console.log('howdy');<br>
+}<br><br>
+
+// adds a listener for clicks, to run the `myEventListeningFunction` function<br>
+document.addEventListener('click', myEventListeningFunction);<br><br>
+
+// immediately removes the click listener that should run the `myEventListeningFunction` function<br>
+document.removeEventListener('click', myEventListeningFunction);<br><br>
+
+Both and remove have to refer to the same function
+
+</p>
+
+
 
 
 </main>
