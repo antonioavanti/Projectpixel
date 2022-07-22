@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Javasript and the DOM</title>
+	<link rel="stylesheet" href="cupofjava.css">
+</head>
+<body>
+<header>
+	<h1>Javascript and the DOM</h1>
+	<h3 class="subHeading">Notes for ProjectPixel</h3>
+</header>
+<main>
+	<h2>The DOM</h2>
+	<p>
+		The DOM stands for "Document Object Model" and is a tree-like structure that is a representation of the HTML document, the relationship between elements, and contains the content and properties of the elements.<br><br>
+
+		The DOM is not:<br><br>
+
+		part of the JavaScript language<br><br>
+		The DOM is:<br><br>
+
+		<ul>
+			<li>constructed from the browser</li>
+			<li>is globally accessible by JavaScript code using the document object
+		The DOM is used all of the time and is what we'll be using throughout this course!</li>
+		</ul>
+
+	</p>
+
+	<h2>Select An Element By ID</h2>
+	<p>
+		Remember the document object is an object, just like a JavaScript object. This means it has key/value pairs. Some of the values are just pieces of data, while others are functions (also known as methods!) that provide some type of functionality. The first DOM method that we'll be looking at is the <big><b>getElementById()</b></big> method.<br>
+		If we ran the code above in the console, we wouldn't get anything, because we did not tell it the ID of any element to get! We need to pass a string to .getElementById() of the ID of the element that we want it to find and subsequently return to us:<br><br>
+
+		<big><b>document.getElementById('footer');</b></big><br><br>
+
+		One thing to notice right off the bat, is that we're passing 'footer', not '#footer'. It already knows that it's searching for an ID (its name is "getElementById", for a reason!).
+	</p>
+
+	<h2>Selecting Multiple Elements At Once</h2>
+	<h3>Accessing Elements By Their Class</h3>
+	<p>
+		.getElementsByClassName() is expecting that we call it with a string of the class we want it to search for/return:<br><br>
+
+		document.getElementsByClassName('brand-color');<br><br>
+
+		Note: CLASS = PLURAL --> .getElementsByClass()<br><br>
+	</p>
+	<h3>Accessing Elements By Their Tag</h3>
+	<p>
+		After looking at both .getElementById() and .getElementsByClassName(), the new .getElementsByTagName() method should seem quite easy on the eyes:<br><br>
+
+		document.getElementsByTagName('p');
+	</p>
+	<h2>The Node Interface</h2>
+	<h3>TAG-->TOKEN-->NODES-->DOM</h3>
+	<p>
+		Node (with a capital "N"!) is a blueprint that contains information about all of the properties and methods for real nodes (with a lowercase "n"!). If you're not used to them, the words "interface", "property", and "method" can be kind of cryptic at first. Just remember that:
+		<ul>
+			<li>interface = blueprint</li>
+			<li>properties = data</li>
+			<li>methods = functionality</li>
+		</ul>
+
+		So the Node Interface is a blueprint for all of the properties (data) and methods (functionality) that every real node has after it's been created. Now, the Node Interface has a lot of properties and methods, but it's not very specific...I mean, what _is_ a node???<br><br>
+
+		Just like "blueprint for a Building" is not as specific as "blueprint for a house" or "blueprint for a skyscraper". These are more-specific blueprints. And these more-specific blueprints would probably have their own properties and methods that are specific to just houses or just skyscrapers.
+	</p>
+	<h2>Element Interface</h2>
+	<p>
+		Just like the Node Interface, the Element Interface is a blueprint for creating elements. <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element" target="blank">Element Interface on MDN</a><br><br>
+
+		One really important thing about the Element Interface is that it is a descendent of the Node Interface.<br><br>
+
+		EventTarget<---Node<---Element<br><br>
+
+		Since Element is pointing at Node, this indicates that the Element Interface inherits all of the Node Interface's properties and methods. This means that any element (lowercase "e"!) that was created from the Element Interface is also a descendent from the Node Interface...which means the element (lowercase "e"!) is also a node (lowercase "n"!).
+	</p>
+	<h2>The querySelector Method</h2>
+	<p>
+		We can use the .querySelector() method to select elements just like we do with CSS. We use the .querySelector() method and pass it a string that's just like a CSS selector:<br><br>
+
+		// find and return the element with an ID of "header"
+		document.querySelector('#header');<br><br>
+
+		// find and return the first element with the class "header"
+		document.querySelector('.header');<br><br>
+
+		// find and return the first header element
+		document.querySelector('header');
+	</p>
+	<h1>Updating Existing Page Content</h1>
+	<br>
+	<h2>An Element's Inner HTML</h2>
+	<p>
+		Every element inherits properties and methods from the Element Interface (remember this from the previous lesson!). This means that every element has an .innerHTML property. This property, as it's rightly named, represents the markup of the element's content. We can use this property to:<br>
+
+		<ul>
+			<li>get an element's (and all of its descendants!) HTML content</li>
+			<li>set an element's HTML content</li>
+		</ul>
+		<br>
+		<big><b>The .innerHTML property sets or returns the HTML content inside the selected element (i.e. between the tags).</b></big><br><br>
+
+		Inner vs Outer<br><br>
+
+		<!--h1 id="pick-me">Greetings To <span>All</span>!</h1-->
+
+		const innerResults = document.querySelector('#pick-me').innerHTML;<br>
+		console.log(innerResults); // logs the string: "Greetings To <!--span><br>All</span-->!"<br><br>
+
+		const outerResults = document.querySelector('#pick-me').outerHTML;<br>
+		console.log(outerResults); // logs the string: "<!--h1 <br>id="pick-me">Greetings To <span-->	All<!--/span>!</h1-->"<br>
+			<br>
+		<big><b>Appending HTML to an element</b></big><br><br>
+
+		For example, we can append a new list item to li to the existing list ul:<br><br>
+
+		HTML
+			<ul id="list">
+  			<li><a href="#">Item 1</a></li>
+  			<li><a href="#">Item 2</a></li>
+  			<li><a href="#">Item 3</a></li>
+			</ul>
+
+			JavaScript<br>
+			const list = document.getElementById("list");<br>
+
+			list.innerHTML += `<li><a href="#">Item ${list.children.length + 1}</a></li>`;<br>
+
+	</p>
+	<h2>An Element's Text Content - Version 2!</h2>
+	<p>
+		 .innerText will get the visible text of the element. This is an important distinction! If CSS is used to hide any text inside that element, .innerText will not return that text, while .textContent will return it. And it's not just the hiding/showing nature of CSS that .innerText adheres to, .innerText will also honor changes to things like capitalization.
+	</p>
+	<h2>Adding new content to the page</h2>
+	<p>
+		You may have noticed that using document.createElement() to create an element didn't actually add that newly created element anywhere on the page! Creating an element...just creates it. It doesn't add it to the DOM. Since the element isn't added to the DOM, it doesn't appear in the page (if you remember, the DOM is the parsed representation of the page). So, now that we can create brand new elements, we need to be able to add them to the DOM so that they'll show up on the page.<br><br>
+
+		We can use the .appendChild() method to add an element to the page! Before we see how this element works, let's quickly define the word "append". There are several different definitions of the word, but I like the wording of the Cambridge Dictionary's the best:<br><br>
+
+		<em>to add something to the end of a piece of writing</em><br><br>
+
+		Now, to use the .appendChild() method, it needs to be called on another element, not the document object!<br>
+
+		// create a brand new <-span> element<br>
+		const newSpan = document.createElement('span');<br><br>
+
+		// select the first (main) heading of the page<br>
+		const mainHeading = document.querySelector('h1');<br><br>
+
+		// add the <-span> element as the last child element of the main heading<br>
+		mainHeading.appendChild(newSpan);<br>
+	</p>
+	<h2>Inserting HTML In Other Locations</h2>
+	<p>
+		By definition, the .appendChild() method will add an element as the last child of the parent element. It's impossible to put it as the first child or anywhere else...it has to be the last child. Wouldn't it be nice if there were a little flexibility in where we could add the child element?<br>
+
+		Enter the .insertAdjacentHTML() method! The .insertAdjacentHTML() method has to be called with two arguments:<br><br>
+
+		the location of the HTML<br>
+		the HTML text that is going to be inserted<br>
+		The first argument to this method will let us insert the new HTML in one of four different locations<br><br>
+
+		beforebegin – inserts the HTML text as a previous sibling<br>
+		afterbegin – inserts the HTML text as the first child<br>
+		beforeend – inserts the HTML text as the last child<br>
+		afterend – inserts the HTML text as a following sibling<br>
+
+		Here's how we'd call .insertAdjacentHTML():<br><br>
+
+		const mainHeading = document.querySelector('#main-heading');<br>
+		const htmlTextToAdd = 'h2>Skydiving is fun!/h2>';<br><br>
+
+		mainHeading.insertAdjacentHTML('afterend', htmlTextToAdd);<br>
+	</p>
+	<h2>Style page Content</h2>
+	<p>
+		we can access an element's style attribute using the .style property!<br><br>
+
+		const mainHeading = document.querySelector('h1');<br><br>
+
+		mainHeading.style.color = 'red';<br>
+		Now, I want to point out that when using the .style property, you can only modify one CSS style at a time. That's why the previous code has .style.color = 'red' and not just .style = 'red'.<br>
+		A style declaration is reset by setting it to null or an empty string, e.g., elt.style.color = null.
+	</p>
+	<h3>Adding Multiple Styles At Once</h3>
+	<p>
+		<big><b>.style.cssText</b></big><br><br>
+
+		const mainHeading = document.querySelector('h1');
+
+		mainHeading.style.cssText = 'color: blue; background-color: orange; font-size: 3.5em';
+	</p>
+	<h3>Setting an Element's Attribute</h3>
+	<p>
+		Another way to set styles for an element is to bypass the .style.<-property> and .style.cssText properties altogether and use the .setAttribute() method:<br><br>
+
+		const mainHeading = document.querySelector('h1');<br><br>
+
+		mainHeading.setAttribute('style', 'color: blue;<br> background-color: orange; font-size: 3.5em;');<br>
+		The setAttribute() method is not just for styling page elements. You can use this method to set any attribute for an element. If you want to give an element an ID, you can do that!:<br>
+		const mainHeading = document.querySelector('h1');
+		
+		// add an ID to the heading's sibling element
+		mainHeading.nextElementSibling.setAttribute('id', 'heading-sibling');<br><br>
+
+		// use the newly added ID to access that element
+		document.querySelector('#heading-sibling').style.backgroundColor = 'red';
+	</p>
+	<h3>Accessing an Element's class</h3>
+	<p>
+		The first element property we'll look at is the .className property. This property returns a string of all of the element's classes. If an element has the following HTML:<br><br>
+
+		<-h1 id="main-heading" class="ank-student jpk-modal">Learn Web Development at Udacity<-/h1>
+		We could use .className to access the list of classes:<br><br>
+
+		const mainHeading = document.querySelector('#main-heading');<br><br>
+
+		// store the list of classes in a variable<br>
+const listOfClasses = mainHeading.className;<br><br>
+
+		// logs out the string "ank-student jpk-modal"<br>
+console.log(listOfClasses);<br>
+The .className property returns a space-separated string of the classes. This isn't the most ideal format, unfortunately. We can, however, convert this space-separated string into an array using the JavaScript string method, .split():<br><br>
+
+		const arrayOfClasses = listOfClasses.split(' ');<br><br>
+
+		// logs out the array of strings ["ank-student", "jpk-modal"]<br>
+console.log(arrayOfClasses);<br>
+Now that we have an array of classes, we can do any data-intensive calculations:<br><br>
+
+		use a for loop to loop through the list of class names<br>
+use .push() to add an item to the list<br>
+use .pop() to remove an item from the list<br>
+.className is a property, so we can set its value just by assigning a string to the property:<br><br>
+
+mainHeading.className = "im-the-new-class";<br>
+The above code erases any classes that were originally in the element's class attribute and replaces it with the single class im-the-new-class.<br><br>
+
+Since .className returns a string, it makes it hard to add or remove individual classes. As I mentioned earlier, we can convert the string to an array and then use different Array Methods to search for a class remove it from the list, and then update the .className with the remaining classes. However, we don't want to do all of that work! Let's use the newer .classList property.<br><br>
+
+The .classList Property<br>
+The .classList property is newer than the .className property, but is much nicer, check it out:<br><br>
+
+<-h1 id="main-heading" class="ank-student jpk-modal">Learn Web Development at Udacity<-/h1><br>
+const mainHeading = document.querySelector('#main-heading');<br><br>
+
+// store the list of classes in a variable<br>
+const listOfClasses = mainHeading.classList;<br>
+
+// logs out ["ank-student", "jpk-modal"]<br>
+console.log(listOfClasses);<br><br>
+
+The .classList property has a number of properties of its own. Some of the most popularly used ones are:<br><br>
+
+<big>.add()</big> - to add a class to the list<br>
+<big>.remove()</big> - to remove a class from the list<br>
+<big>.toggle()</big> - to add the class if it doesn't exists or remove it from the list if it does already exist<br>
+<big>.contains()</big> - returns a boolean based on if the class exists in the list or not<br>
+	</p>
+<h2>Working with browser events</h2>
+<p>
+	<big><b>EventTarget</b></big><===<big><b>Node</b></big><===<big><b>Element</b></big><br><br>
+
+		As you can see from the image above, the EventTarget is at the top of the chain. This means that it does not inherit any properties or methods from any other interfaces. However, every other interface inherits from it and therefore contain its properties and methods. This means that each of the following is an "event target";<br>
+
+		<ul>
+			<li>the document object</li>
+			<li>the paragraph element</li>
+			<li>the video element</li>
+			<li>etc</li>
+		</ul>
+
+		Remember that both the document object and any DOM element can be an event target. And again, why is this?...because both the Element Interface and the Document Interface inherit from the EventTarget Interface. So any individual element inherits from the Element Interface, which in turn inherits from the EventTarget Interface. Likewise, the document object comes from the Document Interface, which in turn inherits from the EventTarget Interface.
+</p>
+<h3>Adding an Event Listener</h3>
+<p>
+	Sample code on how to set it up:<br><br>
+
+	<-event-target>.addEventListener(<-event-to-listen-for>, <-function-to-run-when-an-event-happens>);
+		<a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener" target="blank">MDN documentation</a><br><br>
+
+	So the event listener needs three things:
+
+	<ol>
+		<li>an event target - this is called the target</li>
+		<li>the type of event to listen for - this is called the type</li>
+		<li>a function to run when the event occurs - this is called the listener</li>
+	</ol>
+</p>
+<h3>Removing an Event Listener</h3>
+<p>
+	<-event-target>.removeEventListener(<-event-to-listen-for>, <-function-to-remove>);<br><br>
+
+	Remember, the listener function must be the exact same function as the one used in the .addEventListener() call...not just an identical looking function. Let's look at a couple of examples.
+
+	This code will successfully add and then remove an event listener:<br><br>
+
+	function myEventListeningFunction() {<br>
+    console.log('howdy');<br>
+}<br><br>
+
+// adds a listener for clicks, to run the `myEventListeningFunction` function<br>
+document.addEventListener('click', myEventListeningFunction);<br><br>
+
+// immediately removes the click listener that should run the `myEventListeningFunction` function<br>
+document.removeEventListener('click', myEventListeningFunction);<br><br>
+
+Both and remove have to refer to the same function
+
+</p>
+
+
+
+
+</main>
+<footer>
+	<h4>Notes by Antonio Avanti</h4>
+</footer>
+</body>
+</html>

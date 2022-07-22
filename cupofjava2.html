@@ -11,7 +11,7 @@
 <script type="text/javascript" src="cupofjava.js"></script>
 <script type="text/javascript" src="cupofjava2.js"></script>
 <script type="text/javascript" src="cupofjava3.js"></script>
-
+<script type="text/javascript" src="cupofjava4.js"></script>
 <header>
 	<h1>ARRAYS</h1>
 
@@ -73,12 +73,89 @@
 			splice() method returns the item(s) that were removed.
 		</p>
 	</div>
-	<div>
-		<iframe width="660" height="420" src="https://www.youtube.com/embed/x7VmszJALtM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-	</div>
+
 </div>
 </p>
+<h2>Array loops</h2>
+<p>
+	Once the data is in the array, you want to be able to efficiently access and manipulate each element in the array without writing repetitive code for each element.To loop through an array, you can use a variable to represent the index in the array, and then loop over that index to perform whatever manipulations your heart desires.<br><br>
 
+	var donuts = ["jelly donut", "chocolate donut", "glazed donut"];<br>
+
+	// the variable `i` is used to step through each element in the array<br>
+	for (var i = 0; i < donuts.length; i++) {<br>
+	    donuts[i] += " hole";<br>
+	    donuts[i] = donuts[i].toUpperCase();<br>
+	}<br>
+</p>
+<h3>ForEach Loop (3js--52)</h3>
+<p>
+	The forEach() method gives you an alternative way to iterate over an array, and manipulate each element in the array with an inline function expression.<br><br>
+
+	var donuts = ["jelly donut", "chocolate donut", "glazed <br>donut"];<br><br>
+
+	donuts.forEach(function(donut) {<br>
+	  donut += " hole";<br>
+	  donut = donut.toUpperCase();<br>
+	  console.log(donut);<br>
+	});<br><br>
+
+	Notice that the forEach() method iterates over the array without the need of an explicitly defined index. In the example above, donut corresponds to the element in the array itself. This is different from a for or while loop where an index is used to access each element in the array:<br><br>
+
+	for (var i = 0; i < donuts.length; i++) {<br>
+  donuts[i] += " hole";<br>
+  donuts[i] = donuts[i].toUpperCase();<br>
+  console.log(donuts[i]);<br>
+}<br>
+</p>
+
+<h3>Parameters (3js--66)</h3>
+<p>
+	The function that you pass to the forEach() method can take up to three parameters. You can call them anything.<br><br>
+
+	words = ["cat", "in", "hat"];<br>
+	words.forEach(function(word, num, all) {<br>
+	  console.log("Word " + num + " in " + all.toString() + " is " + word);<br>
+	});<br>
+</p>
+
+<h2>Map (3js--86</h2>
+<p>
+	With the map() method, you can take an array, perform some operation on each element of the array, and return a new array.
+</p>
+
+<h2>Array of arrays</h2>
+<p>
+	You could use an array of arrays that has the name of each item associated with its position in a box...for example.<br><br>
+
+	var donutBox = [<br>
+	  ["glazed", "chocolate glazed", "cinnamon"],<br>
+	  ["powdered", "sprinkled", "glazed cruller"],<br>
+	  ["chocolate cruller", "Boston creme", "creme de leche"]<br>
+	];<br><br>
+
+	If you wanted to loop over the donut box and display each donut (along with its position in the box!) you would start with writing a for loop to loop over each row of the box of donuts:<br><br>
+
+	var donutBox = [<br>
+	  ["glazed", "chocolate glazed", "cinnamon"],<br>
+	  ["powdered", "sprinkled", "glazed cruller"],<br>
+	  ["chocolate cruller", "Boston creme", "creme de leche"]<br>
+	];<br><br>
+
+	// here, donutBox.length refers to the number of rows of donuts<br>
+	for (var row = 0; row < donutBox.length; row++) {<br>
+	  console.log(donutBox[row]);<br>
+	}<br><br>
+
+	Since each row is an array of donuts, you next need to set up an inner-loop to loop over each cell in the arrays.<br><br>
+
+	for (var row = 0; row < donutBox.length; row++) {<br>
+	  // here, donutBox[row].length refers to the length of the donut array currently being looped over<br>
+	  for (var column = 0; column < donutBox[row].length; column++) {<br>
+	    console.log(donutBox[row][column]);<br>
+	  }<br>
+	}<br>
+</p>
 </main>
 <footer>
 	<h3>Notes by Antonio Avanti</h3>

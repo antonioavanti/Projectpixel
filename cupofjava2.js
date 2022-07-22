@@ -163,6 +163,6 @@ emotions("happy", function(num){
 		audio = audio + "ha";
 	}
 	audio = audio + "!" ;
-	return audio
+	return audio;
 
 });
