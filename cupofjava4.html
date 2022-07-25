@@ -313,6 +313,205 @@ Both and remove have to refer to the same function
 
 </p>
 
+<h3>Phase of an event</h3>
+<ul>
+	<li>
+		<a href="https://www.w3.org/TR/DOM-Level-3-Events/#event-flow">Event dispatch and DOM event flow</a>
+	</li>
+	<li>
+		<a href="https://www.w3.org/TR/DOM-Level-3-Events/#capture-phase">Capture phase</a>
+	</li>
+	<li>
+		<a href="https://www.w3.org/TR/DOM-Level-3-Events/#target-phase">Target phase</a>
+	</li>
+	<li>
+		<a href="https://www.w3.org/TR/DOM-Level-3-Events/#bubble-phase">Bubble phase</a>
+	</li>
+</ul>
+<p>
+	There are three different phases during the lifecycle of an event. They are:
+	<ul>
+		<li>the capturing phase</li>
+		<li>the at target phase</li>
+		<li>and the bubbling phase</li>
+	</ul>
+	And they actually follow the order above; first, it's capturing, then at target, and then the bubbling phase.Most event handlers run during the at target phase, such as when you attach a click event handler to the button. The event arrives at the button (its target), and there's only a handler for it right there, so the event handler gets run.<br><br>
+
+	But sometimes you have a collection of items -- such as a list -- and want to have one handler cover every item (and still have the option of individual handlers for some items.) By default, if you click on a child item and a handler doesn't intercept the click, the event will "bubble" upward to the parent, and keep bubbling until something handles it or it hits the document.<br><br>
+
+	Capturing, on the other hand, lets the parent intercept an event before it reaches a child.<br><br>
+
+	here's actually a third argument to the .addEventListener() method; the useCapture argument. From it's name, you'd think that if this argument were left out, .addEventListener() would default to using the capturing phase. This is an incorrect assumption! By default, when .addEventListener() is called with only two arguments, the method defaults to using the bubbling phase.<br>
+
+	The code below uses .addEventListener() with only two arguments, so it will invoke the listener during the bubbling phase:<br><br>
+
+	document.addEventListener('click', function () {<br>
+   console.log('The document was clicked');<br>
+	});<br>
+	However, in this code, .addEventListener() is called with three arguments with the third argument being true (meaning it should invoke the listener earlier, during the capturing phase!).<br><br>
+
+	document.addEventListener('click', function () {<br>
+   console.log('The document was clicked');<br>
+	}, true);<br>
+</p>
+<h4>the Default Action</h4>
+<p>
+	As we just looked at, the event object stores a lot of information, and we can use this data to do all sorts of things. However, one incredibly common reason that professionals use the event object for, is to prevent the default action from happening. That sounds like an odd thing to do, but let's explore this.<br><br>
+
+	Think about an anchor link on a webpage. There are probably a couple dozen links on this page! What if you wanted to run some code and display some output when you click on one of these links. If you click on the link, it will automatically navigate you to the location listed in its href attribute: that's what it does by default.<br><br>
+
+	What about a form element? When you submit a form, by default, it will send the data to the location in its action attribute. What if we wanted to validate the data before sending it, though?<br>
+<br>
+	Without the event object, we're stuck with the default actions. However, the event object has a .preventDefault() method on it that a handler can call to prevent the default action from occurring!<br><br>
+
+	const links = document.querySelectorAll('a');<br>
+	const thirdLink = links[2];<br><br>
+
+	thirdLink.addEventListener('click', function (event) {<br>
+    event.preventDefault();<br>
+    console.log("Look, ma! We didn't navigate to a new page!");<br>
+	});
+</p>
+<h2>Avoid too many Events</h2>
+<article>
+	<p>
+		There are 200 event listeners in this code:<br><br>
+
+		const myCustomDiv = document.createElement('div');<br><br>
+
+		for (let i = 1; i <= 200; i++) {<br>
+	    const newElement = document.createElement('p');<br>
+	    newElement.textContent = 'This is paragraph number ' + i;<br><br>
+
+	    newElement.addEventListener('click', function respondToTheClick(evt) {<br>
+	        console.log('A paragraph was clicked.');<br>
+	    });<br><br>
+
+	    myCustomDiv.appendChild(newElement);<br>
+		}<br><br>
+
+		document.body.appendChild(myCustomDiv);
+	</p>
+
+	<p>
+		<big><b>Refactoring The Number of Event Listeners</b></big><br>
+
+			We could extract this function and just reference the function instead of creating two hundred different functions:<br><br>
+
+			const myCustomDiv = document.createElement('div');<br><br>
+
+			function respondToTheClick() {<br>
+		    console.log('A paragraph was clicked.');<br>
+			}<br><br>
+
+			for (let i = 1; i <= 200; i++) {<br>
+		    const newElement = document.createElement('p');<br>
+		    newElement.textContent = 'This is paragraph number ' + i;<br><br>
+
+		    newElement.addEventListener('click', respondToTheClick);<br><br>
+
+		    myCustomDiv.appendChild(newElement);<br>
+			}<br><br>
+
+			document.body.appendChild(myCustomDiv);<br><br>
+
+			<big><b>Taking it down to a single event and function</b></big><br><br>
+
+			const myCustomDiv = document.createElement('div');<br><br>
+
+			function respondToTheClick() {<br>
+		    console.log('A paragraph was clicked.');<br>
+			}<br><br>
+
+			for (let i = 1; i <= 200; i++) {<br>
+		    const newElement = document.createElement('p');<br>
+		    newElement.textContent = 'This is paragraph number ' + i;<br><br>
+
+		    myCustomDiv.appendChild(newElement);<br>
+			}<br><br>
+
+			myCustomDiv.addEventListener('click', respondToTheClick);<br><br>
+
+			document.body.appendChild(myCustomDiv);
+	</p>
+
+	<p>
+		<big><b>Event Delegation</b></big><br><br>
+
+			Remember the event object that we looked at in the previous section? That's our ticket to getting back the original functionality!<br>
+
+			The event object has a .target property. This property references the target of the event. Remember the capturing, at target, and bubbling phases?...these are coming back into play here, too!<br>
+
+			Let's say that you click on a paragraph element. Here's roughly the process that happens:<br><br>
+			<ol>
+				<li>a paragraph element is clicked</li>
+				<li>the event goes through the capturing phase</li>
+				<li>it reaches the target</li>
+				<li>it switches to the bubbling phase and starts going up the DOM tree</li>
+				<li>when it hits the <-div> element, it runs the listener function</li>
+				<li>inside the listener function, event.target is the element that was clicked</li>
+			</ol>
+
+
+			So event.target gives us direct access to the paragraph element that was clicked. Because we have access to the element directly, we can access its .textContent, modify its styles, update the classes it has - we can do anything we want to it!<br><br>
+
+			const myCustomDiv = document.createElement('div');<br><br>
+
+			function respondToTheClick(evt) {<br>
+			    console.log('A paragraph was clicked: ' + evt.target.textContent);<br>
+			}<br><br>
+
+			for (let i = 1; i <= 200; i++) {<br>
+			    const newElement = document.createElement('p');<br>
+			    newElement.textContent = 'This is paragraph number ' + i;<br><br>
+
+			    myCustomDiv.appendChild(newElement);<br>
+			}<br><br>
+
+			document.body.appendChild(myCustomDiv);<br><br>
+
+			myCustomDiv.addEventListener('click', respondToTheClick);<br>
+	</p>
+</article>
+<h3>Checking the Node Type in Event Delegation</h3>
+
+<p>In the code snippet we used above, we added the event listener directly to the <-div> element. The listener function logs a message saying that a paragraph element was clicked (and then the text of the target element). This works perfectly! However, there is nothing to ensure that it was actually a <-p> tag that was clicked before running that message. In this snippet, the <-p> tags were direct children of the <-div> element, but what happens if we had the following HTML:</p>
+
+<article id="content">
+  <p>Brownie lollipop <span>carrot cake</span> gummies lemon drops sweet roll dessert tiramisu. Pudding muffin <span>cotton candy</span> croissant fruitcake tootsie roll. Jelly jujubes brownie. Marshmallow jujubes topping sugar plum jelly jujubes chocolate.</p>
+
+  <p>Tart bonbon soufflé gummi bears. Donut marshmallow <span>gingerbread cupcake</span> macaroon jujubes muffin. Soufflé candy caramels tootsie roll powder sweet roll brownie <span>apple pie</span> gummies. Fruitcake danish chocolate tootsie roll macaroon.</p>
+</article>
+<p>
+	In this filler text, notice that there are some <-span> tags. If we want to listen to the <-article> for a click on a <-span>, you might think that this would work:<br><br>
+
+	document.querySelector('#content').addEventListener('click', function (evt) {<br>
+	    console.log('A span was clicked with text ' + evt.target.textContent);<br>
+	});<br>
+	This will work, but there's a major flaw. The listener function will still fire when either one of the paragraph elements is clicked, too! In other words, this listener function is not verifying that the target of the event is actually a <-span> element. Let's add in this check:<br>
+
+	document.querySelector('#content').addEventListener('click', function (evt) {<br>
+	    if (evt.target.nodeName === 'SPAN') {  // ← verifies target is desired element<br>
+	        console.log('A span was clicked with text ' + evt.target.textContent);<br>
+	    }<br>
+	});<br>
+	Remember that every element inherits properties from the Node Interface. One of the properties of the Node Interface that is inherited is .nodeName. We can use this property to verify that the target element is actually the element we're looking for. When a <-span> element is clicked, it will have a .nodeName property of "SPAN", so the check will pass and the message will be logged. However, if a <-p> element is clicked, it will have a .nodeName property of "P", so the check will fail and the message will not be logged.<br><br>
+
+	⚠️ The nodeName's Capitalization ⚠️<br>
+	The .nodeName property will return a capital string, not a lowercase one. So when you perform your check make sure to either:<br><br>
+
+	check for capital letters<br>
+	convert the .nodeName to lowercase<br>
+	// check using capital letters<br>
+	if (evt.target.nodeName === 'SPAN') {<br>
+	    console.log('A span was clicked with text ' + evt.target.textContent);<br>
+	}<br><br>
+
+	> // convert nodeName to lowercase<br>
+	if (evt.target.nodeName.toLowerCase() === 'span') {<br>
+	    console.log('A span was clicked with text ' + evt.target.textContent);<br>
+	}
+</p>
 
 
 
