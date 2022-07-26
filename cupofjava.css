@@ -9,6 +9,15 @@
 	align-items: center;
 }
 
+#headerList {
+	list-style-type: square;
+	text-align: center;
+	font-family: trasandina,sans-serif;
+	font-weight: 400;
+	font-style: normal;
+	font-size: 250%;
+}
+
 .comparison {
 	border: 1px solid red;
 	padding: 10px;
@@ -19,6 +28,9 @@
 
 .subHeading{
 	text-align: center;
+	display: inline;
+	padding: 20px;
+	list-style-type: square;
 }
 
 html{
@@ -34,7 +46,11 @@ p{
 
 header{
 	background-color: aliceblue;
-
+	border-bottom: 1px solid black;
+	border-top: 1px solid black;
+	background-image: url(https://images.pexels.com/photos/1103970/pexels-photo-1103970.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+	background-repeat: repeat-x;
+	background-size: cover;
 }
 
 main{
