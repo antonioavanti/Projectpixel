@@ -5,21 +5,67 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Performance</title>
 	<link rel="stylesheet" href="cupofjava.css">
+	<link rel="stylesheet" href="https://use.typekit.net/riu7bcu.css">
 </head>
 <body>
-<header>
-	<h1>PERFORMANCE</h1>
+	<header>
+		<h1>PERFORMANCE</h1>
 
-		<ul id="headerList">
-			<li class="subHeading">Adding Page content</li>
-			<li class="subHeading">Reflow and Repaint</li>
-			<li class="subHeading">The Call Stack</li>
-			<li class="subHeading">The event Loop</li>
-			<li class="subHeading">setTimeout</li>
-		</ul>
+			<ul id="headerList">
+				<li class="subHeading">Adding Page content</li>
+				<li class="subHeading">Reflow and Repaint</li>
+				<li class="subHeading">The Call Stack</li>
+				<li class="subHeading">The event Loop</li>
+				<li class="subHeading">setTimeout</li>
+			</ul>
+	</header>
 
-</header>
 <main>
+
+	<h2>Using A Loop To Add Content</h2>
+	<p>
+		<b>for (let i = 1; i <= 200; i++) {<br>
+    	const newElement = document.createElement('p');<br>
+    	newElement.textContent = 'This is paragraph number ' + i;<br><br>
+
+    	document.body.appendChild(newElement);<br>
+		}</b><br><br>
+
+		This code:<br><br>
+		<ul>
+			<li>creates a paragraph element</li>
+			<li>adds some text to the paragraph</li>
+			<li>adds the paragraph to the page</li>
+		</ul><br><br>
+
+		...and it does this two hundred times.<br><br>
+
+		Since we want two hundred things done, the best way to do this is with a for loop, so that code is inescapable. However, the code inside the for loop is not all that efficient, and there are quite a few things we could do to improve this code. We could:<br><br>
+
+		<ul>
+			<li>create some parent container element outside of the loop</li>
+			<li>we could append all new paragraph elements to this parent container</li>
+			<li>we append this parent container to the <-body> element instead of appending each time through the loop</li>
+		</ul><br><br>
+
+		Let's see all the above changes:<br><br>
+
+		<b>
+			const myCustomDiv = document.createElement('div');
+
+			for (let i = 1; i <= 200; i++) {<br>
+			  const newElement = document.createElement('p');<br>
+			  newElement.innerText = 'This is paragraph number ' + i;<br><br>
+
+			  myCustomDiv.appendChild(newElement);<br>
+			}<br>
+
+			document.body.appendChild(myCustomDiv);
+		</b>
+
+
+
+	</p>
 
 </main>
 <footer>
