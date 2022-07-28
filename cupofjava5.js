@@ -8,8 +8,8 @@ for (let i = 1; i <= 100; i++) {
 
 const startingTime = performance.now();
 
-for (let i = 1; i <= 100; i++) {
-  for (let j = 1; j <= 100; j++) {
+for (let i = 1; i <= 10; i++) {
+  for (let j = 1; j <= 10; j++) {
     console.log('i and j are ', i, j);
   }
 }
@@ -52,3 +52,32 @@ function appendNewMessage() {
 
 addParagraph();
 appendNewMessage();
+
+//setTimeout
+
+setTimeout(function sayHi() {
+    console.log('Howdy');
+}, 1000);
+
+//breaking up long-running code
+/*let count = 1
+
+function generateParagraphs() {
+    const fragment = document.createDocumentFragment();
+
+    for (let i = 1; i <= 500; i++) {
+        const newElement = document.createElement('p');
+        newElement.textContent = 'This is paragraph number ' + count;
+        count = count + 1;
+
+        fragment.appendChild(newElement);
+    }
+
+    document.body.appendChild(fragment);
+
+    if (count < 20000) {
+        setTimeout(generateParagraphs, 0);
+    }
+}
+
+generateParagraphs();*/
